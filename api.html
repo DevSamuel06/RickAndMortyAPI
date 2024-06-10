@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RickAndMorty API</title>
+    <link rel="stylesheet" href="api.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>RickAndMorty API </h1>
+        </header>
+        <main>
+            <div class="search-bar">
+                <input type="text" v-model="searchQuery" id="search-input" placeholder="Procurar um personagem...">
+                <button @click="fetchCharacters" id="search-button">Pesquisar</button>
+            </div>
+            <div id="character-container">
+                <div v-for="character in characters" :key="character.id" class="character-card">
+                    <img :src="character.image" :alt="character.name + ' image'" class="character-image">
+                    <div class="character-details">
+                        <h2>{{ character.name }}</h2>
+                        <p>Status: {{ character.status }}</p>
+                        <p>Species: {{ character.species }}</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
