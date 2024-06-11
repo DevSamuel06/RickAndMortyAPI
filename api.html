@@ -10,15 +10,17 @@
 <body>
     <div id="app">
         <header>
-            <h1>RickAndMorty API </h1>
+            <h1>RickAndMorty API</h1>
         </header>
         <main>
             <div class="search-bar">
                 <input type="text" v-model="searchQuery" id="search-input" placeholder="Procurar um personagem...">
                 <button @click="fetchCharacters" id="search-button">Pesquisar</button>
             </div>
-            <div id="character-container">
-                <div v-for="character in characters" :key="character.id" class="character-card">
+            <div v-if="isLoading" class="loading">Carregando...</div>
+            <div v-if="error" class="error">{{ error }}</div>
+            <div v-else id="character-container">
+                <div v-for="character in characters" :key="character.id" class="character-card" @click="showCharacterDetails(character)">
                     <img :src="character.image" :alt="character.name + ' image'" class="character-image">
                     <div class="character-details">
                         <h2>{{ character.name }}</h2>
@@ -28,6 +30,18 @@
                 </div>
             </div>
         </main>
+        <div v-if="selectedCharacter" class="modal">
+            <div class="modal-content">
+                <span class="close" @click="closeModal">&times;</span>
+                <h2>{{ selectedCharacter.name }}</h2>
+                <img :src="selectedCharacter.image" :alt="selectedCharacter.name + ' image'" class="character-image">
+                <p>Status: {{ selectedCharacter.status }}</p>
+                <p>Species: {{ selectedCharacter.species }}</p>
+                <p>Gender: {{ selectedCharacter.gender }}</p>
+                <p>Origin: {{ selectedCharacter.origin.name }}</p>
+                <p>Location: {{ selectedCharacter.location.name }}</p>
+            </div>
+        </div>
     </div>
     <script src="scripts.js"></script>
 </body>
