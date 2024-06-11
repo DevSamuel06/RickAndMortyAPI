@@ -24,5 +24,8 @@ Este projeto foi criado para demonstrar como consumir uma API RESTful em uma apl
 - Paginação 📑
 - Exibição de detalhes dos personagens 👤
 
+## Experimente o site online:
+
+https://devsamuel06.github.io/RickAndMortyAPI/
 
 
