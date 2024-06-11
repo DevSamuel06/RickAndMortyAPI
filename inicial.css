@@ -8,11 +8,23 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: url('/img/inicial.gif') no-repeat center center fixed; 
-    background-size: cover; 
-    height: 100vh; 
-    
+    background: linear-gradient(135deg, #24325FFF, #69C8ECFF);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .container {
     text-align: center;
 }
@@ -22,7 +34,7 @@ h1 {
 button {
     padding: 10px 20px;
     font-size: 1em;
-    color: #096415;
+    color: #ffffff;
     background-color: #282c34;
     border: 2px solid #096415;
     border-radius: 5px;
